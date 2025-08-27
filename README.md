@@ -44,7 +44,7 @@ The homepage displays a list of all posts, and clicking on one reveals the full 
 │   └── main.js            # Handles interactions & navigation
 └── assets/
     └── images/            # (if needed)
-
+```
 ---
 
 ## ⚙️ Installation & Setup
@@ -59,4 +59,17 @@ cd blog-post-viewer
 Open index.html in your browser to run the project.
 No server is required — everything works with plain HTML, CSS, and JavaScript.
 
+## 💡 Usage
+
+```plaintext
+- Browse blog posts on the homepage.
+- Click a post title to view its full content.
+- Use the "Contact the Author" form to send a message (with validation).
+- Save favorite posts for later via localStorage.
+
+
+🛠️ Technologies Used
+- HTML5
+- CSS3
+- JavaScript (Vanilla, ES6 Modules)
 
