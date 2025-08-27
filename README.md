@@ -31,17 +31,20 @@ The homepage displays a list of all posts, and clicking on one reveals the full 
 
 ---
 ## 📂 Project Structure
+
+```plaintext
 /blog-post-viewer
-│── index.html
-│── post.html # (optional, if using separate pages)
-│── /css
-│ └── styles.css
-│── /js
-│ ├── postsData.js # Array of blog posts
-│ ├── renderPosts.js # Renders homepage & post content
-│ └── main.js # Handles interactions & navigation
-└── /assets
-└── images/
+├── index.html
+├── post.html              # (optional, if using separate pages)
+├── css/
+│   └── styles.css
+├── js/
+│   ├── postsData.js       # Array of blog posts
+│   ├── renderPosts.js     # Renders homepage & post content
+│   └── main.js            # Handles interactions & navigation
+└── assets/
+    └── images/            # (if needed)
+
 ---
 
 ## ⚙️ Installation & Setup
