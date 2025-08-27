@@ -30,7 +30,18 @@ The homepage displays a list of all posts, and clicking on one reveals the full 
   - `renderPosts.js` handles HTML creation for both list view and single post view.
 
 ---
-
+## 📂 Project Structure
+/blog-post-viewer
+│── index.html
+│── post.html # (optional, if using separate pages)
+│── /css
+│ └── styles.css
+│── /js
+│ ├── postsData.js # Array of blog posts
+│ ├── renderPosts.js # Renders homepage & post content
+│ └── main.js # Handles interactions & navigation
+└── /assets
+└── images/
 ---
 
 ## ⚙️ Installation & Setup
@@ -40,5 +51,9 @@ Clone the repository:
 ```bash
 git clone https://github.com/your-username/blog-post-viewer.git
 cd blog-post-viewer
+```
+
+Open index.html in your browser to run the project.
+No server is required — everything works with plain HTML, CSS, and JavaScript.
 
 
