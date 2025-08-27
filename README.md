@@ -1,4 +1,4 @@
-# 📝 Blog Post Viewer
+# 📝 Blog Site
 
 A simple website for viewing blog posts.  
 The homepage displays a list of all posts, and clicking on one reveals the full content on a separate page or section.
@@ -33,7 +33,7 @@ The homepage displays a list of all posts, and clicking on one reveals the full 
 ## 📂 Project Structure
 
 ```plaintext
-/blog-post-viewer
+/blog-site
 ├── index.html
 ├── post.html              # (optional, if using separate pages)
 ├── css/
@@ -52,8 +52,8 @@ The homepage displays a list of all posts, and clicking on one reveals the full 
 Clone the repository:
 
 ```bash
-git clone https://github.com/your-username/blog-post-viewer.git
-cd blog-post-viewer
+git clone https://github.com/iamvalson/blog-site.git
+cd blog-site
 ```
 
 Open index.html in your browser to run the project.
