@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Blog</title>
+    <script
+      src="https://kit.fontawesome.com/cfe91eaec4.js"
+      crossorigin="anonymous"
+    ></script>
+    <link rel="stylesheet" href="base.css" />
+    <link rel="stylesheet" href="home.css" />
+    <link rel="stylesheet" href="footer.css" />
+    <link rel="stylesheet" href="newsletter.css" />
+    <link
+      rel="icon"
+      type="x/icon"
+      href="blog_images/—Pngtree—blogger icon_4235821.png"
+    />
+  </head>
+  <body>
+    <!-- Header -->
+    <header id="header">
+      <div class="left-section">
+        <img
+          class="blog-logo"
+          src="blog_images/—Pngtree—blogger icon_4235821.png"
+          alt="CSC Techpioneers logo"
+        />
+        <p class="blog-name"><strong>CSC Techpioneers</strong></p>
+      </div>
+
+      <nav class="middle-section" aria-label="Main navigation">
+        <a href="index.html" class="nav-link">Home</a>
+
+        <a href="favorites.html" class="nav-link">Favorites</a>
+
+        <a href="blog.html" class="nav-link">Blog</a>
+
+        <a href="about.html" class="nav-link">About us</a>
+      </nav>
+
+      <div class="right-section">
+        <button id="theme-toggle" class="btn" aria-label="Toggle theme">
+          <i class="fa-regular fa-moon"></i>
+        </button>
+      </div>
+    </header>
+    <!-- Blog list -->
+    <section class="blog-section" aria-labelledby="recent-heading">
+      <div
+        class="blog-list"
+        id="blog-list"
+        data-initial-load="12"
+        data-load-more="12"
+      ></div>
+    </section>
+
+    <div class="load-more-wrap">
+      <button id="loading" class="load-more">Loading more...</button>
+    </div>
+
+    <!-- Newsletter -->
+    <section class="newsletter" aria-labelledby="newsletter-heading">
+      <h3 id="newsletter-heading">Subscribe to our newsletter</h3>
+      <p>Get the latest posts and updates straight to your inbox.</p>
+      <form novalidate>
+        <input
+          type="email"
+          placeholder="Enter your email"
+          aria-label="Email"
+          required
+        />
+        <button type="submit" class="btn primary">Subscribe</button>
+        <span class="error" aria-live="polite"></span>
+        <span class="success" aria-live="polite" style="display: none"
+          >Thanks for subscribing!</span
+        >
+      </form>
+    </section>
+
+    <!-- Footer -->
+    <footer id="footer" class="site-footer" role="contentinfo">
+      <div class="footer-content">
+        <div class="footer-cta">
+          <h2>Let's get started on something great</h2>
+          <h3>Join over 4,000+ startups with Untitled</h3>
+          <div class="cta-buttons">
+            <button id="contact" class="btn outline">Chat to us</button>
+            <button id="get-started" class="btn primary">Get started</button>
+          </div>
+        </div>
+
+        <nav class="footer-links" aria-label="Footer">
+          <div class="footer-column">
+            <h4>Product</h4>
+            <ul>
+              <li><a href="#">Overview</a></li>
+              <li><a href="#">Features</a></li>
+              <li><a href="#">Solutions</a></li>
+              <li><a href="#">Tutorials</a></li>
+              <li><a href="#">Pricing</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-column">
+            <h4>Company</h4>
+            <ul>
+              <li><a href="#">About us</a></li>
+              <li><a href="#">Careers</a></li>
+              <li><a href="#">Press</a></li>
+              <li><a href="#">News</a></li>
+              <li><a href="#">Media kit</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-column">
+            <h4>Resources</h4>
+            <ul>
+              <li><a href="#">Blogs</a></li>
+              <li><a href="#">Newsletter</a></li>
+              <li><a href="#">Events</a></li>
+              <li><a href="#">Help center</a></li>
+              <li><a href="#">Tutorials</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-column">
+            <h4>Use cases</h4>
+            <ul>
+              <li><a href="#">Startups</a></li>
+              <li><a href="#">Enterprises</a></li>
+              <li><a href="#">Government</a></li>
+              <li><a href="#">SaaS center</a></li>
+              <li><a href="#">Marketplace</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-column">
+            <h4>Social</h4>
+            <ul>
+              <li><a href="#">Twitter</a></li>
+              <li><a href="#">LinkedIn</a></li>
+              <li><a href="#">Facebook</a></li>
+              <li><a href="#">GitHub</a></li>
+              <li><a href="#">AngelList</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-column">
+            <h4>Legal</h4>
+            <ul>
+              <li><a href="#">Terms</a></li>
+              <li><a href="#">Privacy</a></li>
+              <li><a href="#">Cookies</a></li>
+              <li><a href="#">Licenses</a></li>
+              <li><a href="#">Contact</a></li>
+            </ul>
+          </div>
+        </nav>
+
+        <div class="footer-bottom">
+          <div class="logo">
+            <img
+              src="blog_images/—Pngtree—blogger icon_4235821.png"
+              alt="CSC Techpioneers logo"
+            />
+            <p>CSC Techpioneers</p>
+          </div>
+          <p class="copyright">© 2025 CSC Techpioneers. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+
+    <script src="renderPosts.js"></script>
+    <script src="posts.js"></script>
+    <script src="posts-data.js"></script>
+    <script src="main.js"></script>
+    <script src="newsletter.js"></script>
+    <script src="theme.js"></script>
+  </body>
+</html>
