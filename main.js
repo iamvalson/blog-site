@@ -36,4 +36,37 @@ document.addEventListener('DOMContentLoaded', function () {
       link.classList.add("active");
     }
   });
+
+  // Newsletter signup validation
+  const newsletterForm = document.querySelector('.newsletter form');
+  if (newsletterForm) {
+    newsletterForm.addEventListener('submit', function (e) {
+      e.preventDefault();
+      const emailInput = newsletterForm.querySelector('input[type="email"]');
+      const errorSpan = newsletterForm.querySelector('.error');
+      const successSpan = newsletterForm.querySelector('.success');
+      const email = emailInput.value.trim();
+
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+      errorSpan.textContent = '';
+      successSpan.style.display = 'none';
+
+      if (!email) {
+        errorSpan.textContent = 'Please enter your email address.';
+        emailInput.focus();
+        return;
+      }
+      if (!emailRegex.test(email)) {
+        errorSpan.textContent = 'Please enter a valid email address.';
+        emailInput.focus();
+        return;
+      }
+
+      // Simulate successful subscription
+      errorSpan.textContent = '';
+      successSpan.style.display = 'inline';
+      emailInput.value = '';
+    });
+  }
 });
