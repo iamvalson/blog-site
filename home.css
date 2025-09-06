@@ -458,3 +458,8 @@
     max-width: 900px;
   }
 }
+.right-section {
+  display: flex;
+  align-items: center;
+  gap: 10px; /* Reduce space between theme toggle and hamburger */
+}

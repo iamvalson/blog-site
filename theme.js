@@ -3,8 +3,16 @@
   const root = document.documentElement;
   const toggleBtn = document.getElementById("theme-toggle");
 
+  function updateHamburgerColor(theme) {
+    const hamburgerIcon = document.querySelector('.hamburger i');
+    if (hamburgerIcon) {
+      hamburgerIcon.style.color = theme === "dark" ? "#fff" : "#222";
+    }
+  }
+
   function applyTheme(theme) {
     root.setAttribute("data-theme", theme);
+    updateHamburgerColor(theme);
     if (toggleBtn) {
       const icon = toggleBtn.querySelector("i");
       if (icon) {
@@ -44,6 +52,11 @@
         setStoredTheme(next);
       });
     }
+  });
+
+  const themeToggle = document.getElementById('theme-toggle');
+  themeToggle.addEventListener('click', function () {
+    document.body.classList.toggle('dark-mode');
   });
 })();
 
