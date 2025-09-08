@@ -4,13 +4,14 @@
   }
 
   function findPostById(id) {
-    return window.POSTS.find(p => Number(p.id) === Number(id));
+    return window.POSTS.find((p) => Number(p.id) === Number(id));
   }
 
   function render(post) {
     if (!post) {
       document.getElementById("post-title").textContent = "Post not found";
-      document.getElementById("post-content").textContent = "We couldn't find that post.";
+      document.getElementById("post-content").textContent =
+        "We couldn't find that post.";
       return;
     }
 
@@ -60,11 +61,14 @@
       const success = document.getElementById("contact-success");
 
       function validateEmail(value) {
-        return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
+        email_pattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+        return email_pattern.test(value);
       }
 
       function clearErrors() {
-        [errName, errEmail, errMessage].forEach((el) => el && (el.textContent = ""));
+        [errName, errEmail, errMessage].forEach(
+          (el) => el && (el.textContent = "")
+        );
       }
 
       form.addEventListener("submit", function (e) {

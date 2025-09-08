@@ -1,6 +1,7 @@
 (function(){
   function validateEmail(value){
-    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
+    email_pattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+    return email_pattern.test(value);
   }
 
   function wireForm(root){
