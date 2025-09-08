@@ -1,6 +1,6 @@
 /* posts.js
    Dynamically render blog posts into .blog-list and handle a "Load more" button.
-   Drop this file in and include it with: <script src="posts.js" defer></script>
+   
 */
 
 // Prefer shared data source; fall back to local sample data

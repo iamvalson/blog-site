@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', function () {
   const mobileNav = document.getElementById('mobile-nav');
   const closeMobileNav = document.getElementById('close-mobile-nav');
 
-  // Create overlay for mobile nav
+  // Overlay for mobile nav
   let overlay = document.createElement('div');
   overlay.id = 'mobile-nav-overlay';
   overlay.style.display = 'none';
@@ -46,7 +46,7 @@ document.addEventListener('DOMContentLoaded', function () {
       const errorSpan = newsletterForm.querySelector('.error');
       const successSpan = newsletterForm.querySelector('.success');
       const email = emailInput.value.trim();
-
+        
       const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
       errorSpan.textContent = '';
