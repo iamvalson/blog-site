@@ -1,8 +1,4 @@
-(function(){
-  function validateEmail(value){
-    email_pattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
-    return email_pattern.test(value);
-  }
+import { validateEmail } from './utils.js';
 
   function wireForm(root){
     const form = root.querySelector('form');
@@ -35,5 +31,4 @@
   document.addEventListener('DOMContentLoaded', function(){
     document.querySelectorAll('.newsletter').forEach(wireForm);
   });
-})();
 

@@ -3,8 +3,11 @@
    
 */
 
+import { POSTS } from './posts-data.js';
+import { renderList } from './renderPosts.js';
+
 // Prefer shared data source; fall back to local sample data
-const posts = (window.POSTS && Array.isArray(window.POSTS)) ? window.POSTS : [
+const posts = (Array.isArray(POSTS)) ? POSTS : [
   {
     id: 1,
     title: "Migrating to Linear 101",
@@ -124,51 +127,8 @@ if (listEl) {
 
 let renderedCount = 0;
 
-/* ---------- Favorites ---------- */
-const FAVORITES_STORAGE_KEY = "favorites";
-
-function getFavorites() {
-  try {
-    const raw = localStorage.getItem(FAVORITES_STORAGE_KEY);
-    return raw ? JSON.parse(raw) : [];
-  } catch (_) {
-    return [];
-  }
-}
-
-function setFavorites(favoriteIds) {
-  try {
-    localStorage.setItem(FAVORITES_STORAGE_KEY, JSON.stringify(favoriteIds));
-  } catch (_) {
-    /* ignore */
-  }
-}
-
-function isFavorite(postId) {
-  const favorites = getFavorites();
-  return favorites.includes(postId);
-}
-
-function toggleFavorite(postId) {
-  const favorites = getFavorites();
-  const idx = favorites.indexOf(postId);
-  if (idx === -1) {
-    favorites.push(postId);
-  } else {
-    favorites.splice(idx, 1);
-  }
-  setFavorites(favorites);
-  return favorites.includes(postId);
-}
-
-/* safe helper to create an element with classes and optional attrs/text */
-function el(tag, { classes = [], attrs = {}, text = "" } = {}) {
-  const node = document.createElement(tag);
-  classes.forEach((c) => node.classList.add(c));
-  Object.entries(attrs).forEach(([k, v]) => node.setAttribute(k, v));
-  if (text) node.textContent = text;
-  return node;
-}
+/* ---------- Shared ---------- */
+// no longer needed; using RenderPosts module for UI
 
 /* render a single post */
 function renderPost(post) {
@@ -192,17 +152,9 @@ function renderPost(post) {
 
 /* render posts */
 function renderPosts(start = 0, count = posts.length) {
-  if (window.RenderPosts && window.RenderPosts.renderList && listEl) {
-    const added = window.RenderPosts.renderList(listEl, posts, start, count);
-    renderedCount += added;
-    updateLoadButton();
-    return;
-  }
-  const slice = posts.slice(start, start + count);
-  const frag = document.createDocumentFragment();
-  slice.forEach((p) => frag.appendChild(renderPost(p)));
-  listEl.appendChild(frag);
-  renderedCount += slice.length;
+  if (!listEl) return;
+  const added = renderList(listEl, posts, start, count);
+  renderedCount += added;
   updateLoadButton();
 }
 

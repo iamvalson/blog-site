@@ -1,4 +1,4 @@
-window.POSTS = [
+export const POSTS = [
   {
     id: 100,
     title: "Breaking Into Product Design: Advice From Techpioneers Founder, Daniel",

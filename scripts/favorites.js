@@ -1,25 +1,9 @@
 // favorites.js
 // Render only favorited posts on the Favorites page
 
-(function () {
-  const FAVORITES_STORAGE_KEY = "favorites";
-
-  function getFavorites() {
-    try {
-      const raw = localStorage.getItem(FAVORITES_STORAGE_KEY);
-      return raw ? JSON.parse(raw) : [];
-    } catch (_) {
-      return [];
-    }
-  }
-
-  function el(tag, { classes = [], attrs = {}, text = "" } = {}) {
-    const node = document.createElement(tag);
-    classes.forEach((c) => node.classList.add(c));
-    Object.entries(attrs).forEach(([k, v]) => node.setAttribute(k, v));
-    if (text) node.textContent = text;
-    return node;
-  }
+import { el } from './utils.js';
+import { getFavorites } from './favoritesStore.js';
+import { POSTS } from './posts-data.js';
 
   function renderPost(post) {
     const article = el("article", {
@@ -71,7 +55,7 @@
     if (!listEl) return;
 
     const favoriteIds = new Set(getFavorites());
-    const posts = (window.POSTS || []).filter((p) => favoriteIds.has(p.id));
+    const posts = POSTS.filter((p) => favoriteIds.has(p.id));
 
     listEl.innerHTML = "";
     if (!posts.length) {
@@ -87,4 +71,3 @@
   }
 
   document.addEventListener("DOMContentLoaded", renderFavorites);
-})();

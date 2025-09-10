@@ -1,10 +1,12 @@
-(function () {
+import { POSTS } from './posts-data.js';
+import { fillPostPage } from './renderPosts.js';
+
   function qs(key) {
     return new URLSearchParams(window.location.search).get(key);
   }
 
   function findPostById(id) {
-    return window.POSTS.find((p) => Number(p.id) === Number(id));
+    return POSTS.find((p) => Number(p.id) === Number(id));
   }
 
   function render(post) {
@@ -15,24 +17,14 @@
       return;
     }
 
-    if (window.RenderPosts && window.RenderPosts.fillPostPage) {
-      window.RenderPosts.fillPostPage(post);
-    } else {
-      const hero = document.getElementById("post-hero");
-      hero.style.backgroundImage = `url("${post.image}")`;
-      document.getElementById("post-title").textContent = post.title;
-      document.getElementById("post-author-pic").src = post.authorPic;
-      document.getElementById("post-author").textContent = post.authorName;
-      document.getElementById("post-date").textContent = post.date;
-      document.getElementById("post-content").innerHTML = post.content;
-    }
+    fillPostPage(post);
     document.title = `${post.title} — Techpioneers`;
   }
 
   document.addEventListener("DOMContentLoaded", function () {
     const rawId = qs("id");
     let post = rawId ? findPostById(rawId) : findPostById(100);
-    if (!post) post = window.POSTS[0];
+    if (!post) post = POSTS[0];
     render(post);
 
     const backLink = document.getElementById("back-link");
@@ -60,10 +52,48 @@
       const errMessage = document.getElementById("error-message");
       const success = document.getElementById("contact-success");
 
-      function validateEmail(value) {
-        email_pattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
-        return email_pattern.test(value);
-      }
+      import('./utils.js').then(({ validateEmail }) => {
+        function clearErrors() {
+          [errName, errEmail, errMessage].forEach(
+            (el) => el && (el.textContent = "")
+          );
+        }
+
+        form.addEventListener("submit", function (e) {
+          e.preventDefault();
+          clearErrors();
+
+          let valid = true;
+          const name = nameInput.value.trim();
+          const email = emailInput.value.trim();
+          const message = messageInput.value.trim();
+
+          if (!name) {
+            errName.textContent = "Please enter your name.";
+            valid = false;
+          }
+          if (!email) {
+            errEmail.textContent = "Please enter your email.";
+            valid = false;
+          } else if (!validateEmail(email)) {
+            errEmail.textContent = "Please enter a valid email address.";
+            valid = false;
+          }
+          if (!message || message.length < 10) {
+            errMessage.textContent = "Message should be at least 10 characters.";
+            valid = false;
+          }
+
+          if (!valid) return;
+
+          // Simulate successful submission
+          form.reset();
+          if (success) {
+            success.style.display = "inline";
+            setTimeout(() => (success.style.display = "none"), 3500);
+          }
+        });
+      });
 
       function clearErrors() {
         [errName, errEmail, errMessage].forEach(
@@ -107,4 +137,3 @@
       });
     }
   });
-})();

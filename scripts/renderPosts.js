@@ -1,29 +1,8 @@
 // renderPosts.js
 // Centralized rendering for post list and single post pages
 
-(function(){
-  const FAVORITES_STORAGE_KEY = "favorites";
-
-  function getFavorites(){
-    try { const raw = localStorage.getItem(FAVORITES_STORAGE_KEY); return raw ? JSON.parse(raw) : []; } catch(_) { return []; }
-  }
-  function setFavorites(ids){ try { localStorage.setItem(FAVORITES_STORAGE_KEY, JSON.stringify(ids)); } catch(_) {} }
-  function isFavorite(id){ return getFavorites().includes(id); }
-  function toggleFavorite(id){
-    const favs = getFavorites();
-    const i = favs.indexOf(id);
-    if (i === -1) favs.push(id); else favs.splice(i,1);
-    setFavorites(favs);
-    return favs.includes(id);
-  }
-
-  function el(tag, { classes = [], attrs = {}, text = "" } = {}) {
-    const node = document.createElement(tag);
-    classes.forEach((c) => node.classList.add(c));
-    Object.entries(attrs).forEach(([k, v]) => node.setAttribute(k, v));
-    if (text) node.textContent = text;
-    return node;
-  }
+import { el } from './utils.js';
+import { isFavorite, toggleFavorite } from './favoritesStore.js';
 
   function renderCard(post){
     const article = el("article", { classes: ["blog"], attrs: { "data-id": post.id } });
@@ -46,7 +25,8 @@
     const meta = el("p", { classes: ["author-meta"], text: `${post.authorName} • ${post.date}` });
 
     const favBtn = el("button", { classes: ["favorite-btn"], attrs: { type: "button", title: "Add to favorites", "aria-label": "Add to favorites", style: "margin-left:auto; background:none; border:none; cursor:pointer; display:flex; align-items:center;" } });
-    const heartIcon = el("i", { classes: [isFavorite(post.id) ? "fa-solid" : "fa-regular", "fa-heart"], attrs: { style: isFavorite(post.id) ? "color:#e0245e;" : "color:#888;" } });
+    var nowFavInit = isFavorite(post.id);
+    const heartIcon = el("i", { classes: [nowFavInit ? "fa-solid" : "fa-regular", "fa-heart"], attrs: { style: nowFavInit ? "color:#e0245e;" : "color:#888;" } });
     favBtn.appendChild(heartIcon);
     favBtn.addEventListener("click", (ev) => {
       ev.stopPropagation();
@@ -84,6 +64,5 @@
     const content = document.getElementById("post-content"); if (content) content.innerHTML = post.content || "";
   }
 
-  window.RenderPosts = { renderList, fillPostPage };
-})();
+  export { renderList, fillPostPage, renderCard };
 
